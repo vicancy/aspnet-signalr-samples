@@ -55,7 +55,7 @@
                 url: '/api/cookie/login?username=' + user + '&role=' + role,
                 success: function (data, status) {
                     connection.hub.logging = true;
-                    connection.hub.start().done(function () {
+                    connection.hub.start({ withCredentials: true}).done(function () {
                         chat.server.hello(user + " joined");
                         $('#sendmessage').click(function () {
                             // Call the Send method on the hub.
