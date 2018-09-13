@@ -278,7 +278,7 @@
                 url: '/api/cookie/login?username=' + username + '&role=' + role,
                 success: function (data, status) {
                     connection.hub.logging = true;
-                    connection.hub.start().done(function () {
+                    connection.hub.start({withCredential: true}).done(function () {
                         onConnected(chat);
                     })
                 }
