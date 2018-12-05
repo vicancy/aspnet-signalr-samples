@@ -10,7 +10,7 @@ using Microsoft.AspNet.SignalR.Hubs;
 
 namespace ChatSample.AspNet
 {
-    [HubName("Chat.A")]
+    [HubName("ChatA")]
     [Authorize]
     public class SimpleChat : Hub
     {
