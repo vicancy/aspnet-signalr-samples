@@ -25,15 +25,15 @@ namespace ChatSample.AspNet
             Clients.Client(Context.ConnectionId).echo(name, message + " (echo from server)");
         }
 
-        public void JoinGroup(string name, string groupName)
+        public async Task JoinGroup(string name, string groupName)
         {
-            Groups.Add(Context.ConnectionId, groupName).Wait();
+            await Groups.Add(Context.ConnectionId, groupName);
             Clients.Group(groupName).echo("_SYSTEM_", $"{name} joined {groupName} with connectionId {Context.ConnectionId}");
         }
 
-        public void LeaveGroup(string name, string groupName)
+        public async Task LeaveGroup(string name, string groupName)
         {
-            Groups.Remove(Context.ConnectionId, groupName).Wait();
+            await Groups.Remove(Context.ConnectionId, groupName);
             Clients.Client(Context.ConnectionId).echo("_SYSTEM_", $"{name} leaved {groupName}");
             Clients.Group(groupName).echo("_SYSTEM_", $"{name} leaved {groupName}");
         }
